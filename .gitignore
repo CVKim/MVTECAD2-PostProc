@@ -18,3 +18,5 @@ results/anomaly_images
 results/anomaly_images_thresholded
 saved_results/
 submission_folder/
+# local run artifacts
+run_all.log
