@@ -441,7 +441,7 @@ if __name__ == '__main__':
 
     # training info
     parser.add_argument('--total_epochs', type=int, default=10)
-    parser.add_argument('--batch_size', type=int, default=16)
+    parser.add_argument('--batch_size', type=int, default=8)  # lowered from 16 for RTX 3080 (10GB); orig 4090(24GB) used 16
     parser.add_argument('--phase', type=str, default='train')
 
     # category_info
