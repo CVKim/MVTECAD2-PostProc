@@ -91,6 +91,7 @@ class CPRDataset(Dataset):
                 line = line.strip()
                 if not line: continue
                 name, k = line.split(' ', 1)
+                k = k.replace('/', os.sep)  # Windows: match r_result.json / foreground keys built via os.path.relpath (backslash)
                 uid, format = os.path.splitext(name)
                 image_fn = os.path.join(self.data_dir, f'{name}')
                 mask_fn = os.path.join(self.data_dir, f'{uid}_mask{format}')

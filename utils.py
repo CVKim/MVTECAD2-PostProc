@@ -711,8 +711,8 @@ def save_dependencies_files(root_path):
             file_path = os.path.abspath(inspect.getfile(module))
             if os.path.isfile(file_path) and os.path.commonpath([abs_cwd, file_path]) == abs_cwd:
                 dependency_files.append(file_path)
-        except TypeError:
-            # 忽略无法获取文件路径的模块
+        except (TypeError, ValueError):
+            # TypeError: 无法获取文件路径的模块; ValueError: Windows 上不同盘符(e.g. conda env on D:) commonpath 报错 -> 该文件必不在 cwd 下, 跳过
             continue
     dependency_files = list(set(dependency_files))
     for file_path in dependency_files:
